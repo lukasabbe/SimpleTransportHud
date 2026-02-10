@@ -13,7 +13,6 @@ public interface SimpleHud {
     Minecraft client = Minecraft.getInstance();
     Identifier backPlateAsset = Identifier.fromNamespaceAndPath(Constants.MOD_ID, "textures/backplate.png");
 
-
     void render(GuiGraphics graphics, DeltaTracker tracker);
 
     Identifier getIdentifier();
@@ -23,15 +22,9 @@ public interface SimpleHud {
     }
 
     default void renderBackPlate(GuiGraphics graphics){
-        int screenWidth = client.getWindow().getGuiScaledWidth();
-        int screenHeight = client.getWindow().getGuiScaledHeight();
-
-        //Creates pos for HUD based on config
-        int[] pos = calculateHudPosition(screenWidth, screenHeight, SimpleHudMod.configInstance.hudPosition);
+        int[] pos = getCornerPos();
         int x = pos[0];
         int y = pos[1];
-        int centeredX = 50;
-        int centeredY = 60;
 
         int backPlateCornerX = 0;
         int backPlateCornerY = 0;
@@ -42,7 +35,7 @@ public interface SimpleHud {
         graphics.blit(
                 RenderPipelines.GUI_TEXTURED,
                 backPlateAsset,
-                x - centeredX, y - centeredY,
+                x, y,
                 backPlateCornerX, backPlateCornerY,
                 backPlateWidth, backPlateHeight,
                 backPlateWidth, backPlateHeight
@@ -70,5 +63,27 @@ public interface SimpleHud {
             case BOTTOM_RIGHT -> new int[]{screenWidth - hudHalfWidth - padding, screenHeight - 25};
             default -> new int[]{screenWidth / 2, screenHeight - 25}; // CENTER
         };
+    }
+
+    default void renderCenteredScaledText(GuiGraphics graphics, String text, int centerX, int y, int color, float scale){
+        var stack = graphics.pose();
+        stack.pushMatrix();
+        stack.translate(centerX, y);
+        stack.scale(scale, scale);
+        stack.translate(-centerX, -y);
+        graphics.drawString(client.font, text, centerX, y, color);
+        stack.popMatrix();
+    }
+
+    default int[] getCornerPos(){
+        int backPlateCenteredX = 50;
+        int backPlateCenteredY = 60;
+
+        int screenWidth = client.getWindow().getGuiScaledWidth();
+        int screenHeight = client.getWindow().getGuiScaledHeight();
+        int[] pos = calculateHudPosition(screenWidth, screenHeight, SimpleHudMod.configInstance.hudPosition);
+        int x = pos[0] - backPlateCenteredX;
+        int y = pos[1] - backPlateCenteredY;
+        return new int[]{x, y};
     }
 }

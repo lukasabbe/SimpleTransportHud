@@ -26,6 +26,9 @@ public class Config {
     public HudPosition hudPosition = HudPosition.CENTER;
 
     @SerialEntry
+    public SpeedEnum speedEnum = SpeedEnum.kmh;
+
+    @SerialEntry
     public boolean ignoreSafeArea = false;
 
     private Map<String, Boolean> getActiveHuds() {
