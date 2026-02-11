@@ -1,6 +1,7 @@
 package com.lukasabbe.simplehud.huds;
 
 import com.lukasabbe.simplehud.Constants;
+import com.lukasabbe.simplehud.config.Config;
 import com.lukasabbe.simplehud.tools.ElytraTools;
 import net.minecraft.client.DeltaTracker;
 import net.minecraft.client.gui.GuiGraphics;
@@ -43,7 +44,7 @@ public class ElytraHud implements SimpleHud {
 
         //Draw speed
         int speedTextY = 15;
-        renderCenteredScaledText(graphics, getSpeed(), x + textX, y + speedTextY, whiteColor, textScale);
+        renderCenteredScaledText(graphics, getSpeed(Config.HANDLER.instance().speedEnumElytra), x + textX, y + speedTextY, whiteColor, textScale);
 
         //Draw coordinates
         int coordinatesTextY = 25;

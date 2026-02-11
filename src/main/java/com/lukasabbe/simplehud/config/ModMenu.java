@@ -39,6 +39,17 @@ public class ModMenu implements ModMenuApi {
                                 .customController(opt -> new EnumController<>(opt, SpeedEnum.class))
                                 .build())
                         .build())
+                .category(ConfigCategory
+                        .createBuilder()
+                        .name(Component.translatable("simple_hud.config.category.boat_hud.name"))
+                        .option(Option
+                                .<SpeedEnum>createBuilder()
+                                .name(Component.translatable("simple_hud.config.category.elytra_options.option.speed_enum.name"))
+                                .description(OptionDescription.of(Component.translatable("simple_hud.config.category.elytra_options.option.speed_enum.description")))
+                                .binding(SpeedEnum.kmh, () -> instance.speedEnumBoat, newVal -> instance.speedEnumBoat = newVal)
+                                .customController(opt -> new EnumController<>(opt, SpeedEnum.class))
+                                .build())
+                        .build())
                 .save(() -> Config.HANDLER.save())
                 .build().generateScreen(parent);
     }

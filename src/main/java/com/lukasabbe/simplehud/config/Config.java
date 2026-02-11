@@ -29,6 +29,9 @@ public class Config {
     public SpeedEnum speedEnumElytra = SpeedEnum.kmh;
 
     @SerialEntry
+    public SpeedEnum speedEnumBoat = SpeedEnum.kmh;
+
+    @SerialEntry
     public boolean ignoreSafeArea = false;
 
     private Map<String, Boolean> getActiveHuds() {

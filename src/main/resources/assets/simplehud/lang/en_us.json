@@ -11,5 +11,8 @@
   "simple_hud.config.category.elytra_options.option.speed_enum.description": "You can change the speed unit to what you are used to",
   "simple_hud.config.speed_enum.kmh": "km/h",
   "simple_hud.config.speed_enum.mph": "MPH",
-  "simple_hud.config.speed_enum.ms": "m/s"
+  "simple_hud.config.speed_enum.ms": "m/s",
+  "simple_hud.config.category.boat_hud.name": "Boat HUD options",
+  "simple_hud.config.category.general.group.activated_huds.option.boat_hud.name": "Boat HUD",
+  "simple_hud.config.category.general.group.activated_huds.option.boat_hud.description": "Boat Hud toggle, if you don't want to see the an HUD when you boat around."
 }
