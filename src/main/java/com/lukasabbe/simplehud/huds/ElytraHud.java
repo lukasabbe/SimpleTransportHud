@@ -20,6 +20,7 @@ public class ElytraHud implements SimpleHud {
         if(!ElytraTools.isFlying()) return;
         if(client.noRender) return;
         if(client.player == null) return;
+        if(ElytraTools.getTime() < Config.HANDLER.instance().elytraHudDelay) return;
 
         int[] pos = getCornerPos();
         int x = pos[0];

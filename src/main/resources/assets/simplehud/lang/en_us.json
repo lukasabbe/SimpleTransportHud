@@ -27,5 +27,8 @@
   "simple_hud.config.category.general.option.safe_area.name": "Ignore Safe Area",
   "simple_hud.config.category.general.option.safe_area.description": "Move HUD to screen edges, ignoring GUI safe area margins",
   "simple_hud.config.category.elytra_options.option.hud_position.name": "HUD Position",
-  "simple_hud.config.category.elytra_options.option.hud_position.description": "Change the position of the HUD on screen"
+  "simple_hud.config.category.elytra_options.option.hud_position.description": "Change the position of the HUD on screen",
+  "simple_hud.config.category.elytra_options.option.delay_hud.name": "Delay HUD displaying",
+  "simple_hud.config.category.elytra_options.option.delay_hud.description": "Change the time it takes for the HUD to appear",
+  "simple_hud.config.category.minecart_hud.name": "Minecart HUD options"
 }

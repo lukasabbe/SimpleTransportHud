@@ -3,6 +3,7 @@ package com.lukasabbe.simplehud.huds;
 import com.lukasabbe.simplehud.Constants;
 import com.lukasabbe.simplehud.config.Config;
 import com.lukasabbe.simplehud.config.HudPosition;
+import com.lukasabbe.simplehud.tools.ElytraTools;
 import com.lukasabbe.simplehud.tools.EntityTools;
 import net.minecraft.client.DeltaTracker;
 import net.minecraft.client.gui.GuiGraphics;
@@ -19,6 +20,8 @@ public class BoatHud implements SimpleHud {
         if(client.noRender) return;
         if(!EntityTools.isRidingEntity(Boat.class)) return;
         if(client.player == null) return;
+        if(EntityTools.getTime() < Config.HANDLER.instance().boatHudDelay) return;
+
 
         int[] pos = getCornerPos();
         int x = pos[0];

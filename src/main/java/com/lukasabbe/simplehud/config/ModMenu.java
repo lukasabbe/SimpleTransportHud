@@ -6,7 +6,6 @@ import dev.isxander.yacl3.api.*;
 import dev.isxander.yacl3.api.controller.IntegerSliderControllerBuilder;
 import dev.isxander.yacl3.api.controller.TickBoxControllerBuilder;
 import dev.isxander.yacl3.gui.controllers.cycling.EnumController;
-import dev.isxander.yacl3.gui.controllers.slider.IntegerSliderController;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
 
@@ -60,6 +59,13 @@ public class ModMenu implements ModMenuApi {
                                 .binding(HudPosition.CENTER, () -> instance.hudPositionElytra, newVal -> instance.hudPositionElytra = newVal)
                                 .customController(opt -> new EnumController<>(opt, HudPosition.class))
                                 .build())
+                        .option(Option
+                                .<Integer>createBuilder()
+                                .name(Component.translatable("simple_hud.config.category.elytra_options.option.delay_hud.name"))
+                                .description(OptionDescription.of(Component.translatable("simple_hud.config.category.elytra_options.option.delay_hud.description")))
+                                .binding(2, () -> instance.elytraHudDelay, newVal -> instance.elytraHudDelay = newVal)
+                                .controller(opt -> IntegerSliderControllerBuilder.create(opt).range(0, 30).step(1))
+                                .build())
                         .build())
                 .category(ConfigCategory
                         .createBuilder()
@@ -77,6 +83,38 @@ public class ModMenu implements ModMenuApi {
                                 .description(OptionDescription.of(Component.translatable("simple_hud.config.category.elytra_options.option.hud_position.description")))
                                 .binding(HudPosition.CENTER, () -> instance.hudPositionBoat, newVal -> instance.hudPositionBoat = newVal)
                                 .customController(opt -> new EnumController<>(opt, HudPosition.class))
+                                .build())
+                        .option(Option
+                                .<Integer>createBuilder()
+                                .name(Component.translatable("simple_hud.config.category.elytra_options.option.delay_hud.name"))
+                                .description(OptionDescription.of(Component.translatable("simple_hud.config.category.elytra_options.option.delay_hud.description")))
+                                .binding(2, () -> instance.boatHudDelay, newVal -> instance.boatHudDelay = newVal)
+                                .controller(opt -> IntegerSliderControllerBuilder.create(opt).range(0, 30).step(1))
+                                .build())
+                        .build())
+                .category(ConfigCategory
+                        .createBuilder()
+                        .name(Component.translatable("simple_hud.config.category.minecart_hud.name"))
+                        .option(Option
+                                .<SpeedEnum>createBuilder()
+                                .name(Component.translatable("simple_hud.config.category.elytra_options.option.speed_enum.name"))
+                                .description(OptionDescription.of(Component.translatable("simple_hud.config.category.elytra_options.option.speed_enum.description")))
+                                .binding(SpeedEnum.kmh, () -> instance.speedEnumMinecart, newVal -> instance.speedEnumMinecart = newVal)
+                                .customController(opt -> new EnumController<>(opt, SpeedEnum.class))
+                                .build())
+                        .option(Option
+                                .<HudPosition>createBuilder()
+                                .name(Component.translatable("simple_hud.config.category.elytra_options.option.hud_position.name"))
+                                .description(OptionDescription.of(Component.translatable("simple_hud.config.category.elytra_options.option.hud_position.description")))
+                                .binding(HudPosition.CENTER, () -> instance.hudPositionMinecart, newVal -> instance.hudPositionMinecart = newVal)
+                                .customController(opt -> new EnumController<>(opt, HudPosition.class))
+                                .build())
+                        .option(Option
+                                .<Integer>createBuilder()
+                                .name(Component.translatable("simple_hud.config.category.elytra_options.option.delay_hud.name"))
+                                .description(OptionDescription.of(Component.translatable("simple_hud.config.category.elytra_options.option.delay_hud.description")))
+                                .binding(2, () -> instance.minecartHudDelay, newVal -> instance.minecartHudDelay = newVal)
+                                .controller(opt -> IntegerSliderControllerBuilder.create(opt).range(0, 30).step(1))
                                 .build())
                         .build())
                 .save(() -> Config.HANDLER.save())

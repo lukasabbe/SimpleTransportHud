@@ -1,7 +1,6 @@
 package com.lukasabbe.simplehud.huds;
 
 import com.lukasabbe.simplehud.Constants;
-import com.lukasabbe.simplehud.SimpleHudMod;
 import com.lukasabbe.simplehud.config.Config;
 import com.lukasabbe.simplehud.config.HudPosition;
 import com.lukasabbe.simplehud.config.SpeedEnum;
@@ -34,7 +33,7 @@ public interface SimpleHud {
     HudPosition getHudPosition();
 
     default boolean isHudActivated(){
-        return  Config.HANDLER.instance().HudActivatedList.get(getIdentifier().toShortString());
+        return Config.HANDLER.instance().HudActivatedList.get(getIdentifier().toShortString());
     }
 
     default void renderBackPlate(GuiGraphics graphics){

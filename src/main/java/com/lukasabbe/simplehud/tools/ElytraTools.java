@@ -12,8 +12,19 @@ public class ElytraTools {
 
     private static double speed = 0;
 
+    private static long ticks = 0;
+
     public static void tickElytraTools(){
         calculateSpeed();
+        if(!isFlying()){
+            ticks = 0;
+        }else{
+            ticks++;
+        }
+    }
+
+    public static long getTime(){
+        return (ticks / 20);
     }
 
     public static void calculateSpeed(){

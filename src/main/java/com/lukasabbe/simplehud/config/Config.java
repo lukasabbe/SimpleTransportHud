@@ -47,6 +47,14 @@ public class Config {
     @SerialEntry
     public SpeedEnum speedEnumMinecart = SpeedEnum.kmh;
 
+    //Display speed
+    @SerialEntry
+    public int elytraHudDelay = 2;
+    @SerialEntry
+    public int boatHudDelay = 0;
+    @SerialEntry
+    public int minecartHudDelay = 0;
+
     private Map<String, Boolean> getActiveHuds() {
         Map<String, Boolean> activatedHuds = new IdentityHashMap<>();
         for(var simpleHudIdentifier : Constants.HudIdentifiers){

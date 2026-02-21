@@ -6,6 +6,21 @@ import net.minecraft.util.Mth;
 import org.jspecify.annotations.Nullable;
 
 public class EntityTools {
+
+    private static long ticks = 0;
+
+    public static void tickEntityTools(){
+        if(!isRidingEntity()){
+            ticks = 0;
+        }else{
+            ticks++;
+        }
+    }
+
+    public static long getTime(){
+        return (ticks / 20);
+    }
+
     public static boolean isRidingEntity(Class<?> entityType){
         var player = getLocalPlayer();
         if(player == null) return false;

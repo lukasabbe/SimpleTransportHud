@@ -6,6 +6,7 @@ import com.lukasabbe.simplehud.huds.ElytraHud;
 import com.lukasabbe.simplehud.huds.MinecartHud;
 import com.lukasabbe.simplehud.huds.SimpleHud;
 import com.lukasabbe.simplehud.tools.ElytraTools;
+import com.lukasabbe.simplehud.tools.EntityTools;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.fabricmc.fabric.api.client.rendering.v1.hud.HudElementRegistry;
@@ -32,6 +33,7 @@ public class SimpleHudMod implements ClientModInitializer {
                 (guiGraphics, deltaTracker) -> renderScaled(guiGraphics, deltaTracker, simpleHud))
         );
         ClientTickEvents.END_CLIENT_TICK.register(client -> ElytraTools.tickElytraTools());
+        ClientTickEvents.END_CLIENT_TICK.register(client -> EntityTools.tickEntityTools());
     }
 
     public static void renderScaled(GuiGraphics graphics, DeltaTracker tracker, SimpleHud simpleHud){

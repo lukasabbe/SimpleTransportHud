@@ -18,6 +18,7 @@ public class MinecartHud implements SimpleHud {
         if(client.noRender) return;
         if(!EntityTools.isRidingEntity(Minecart.class)) return;
         if(client.player == null) return;
+        if(EntityTools.getTime() < Config.HANDLER.instance().minecartHudDelay) return;
 
         int[] pos = getCornerPos();
         int x = pos[0];
