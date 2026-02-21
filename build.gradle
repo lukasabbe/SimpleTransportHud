@@ -1,6 +1,7 @@
 plugins {
     id 'fabric-loom' version '1.15-SNAPSHOT'
     id 'maven-publish'
+    id "com.modrinth.minotaur" version "2.+"
 }
 
 version = project.mod_version
@@ -67,5 +68,20 @@ java {
 jar {
     from("LICENSE") {
         rename { "${it}_${project.archives_base_name}" }
+    }
+}
+
+modrinth {
+    token = System.getenv("MODRINTH_TOKEN")
+    projectId = "5iOVOX8K" //https://modrinth.com/mod/simple-transport-hud
+    version = project.version
+    versionType = project.versionType
+    uploadFile = jar
+    gameVersions = [project.minecraft_version]
+    loaders = ["fabric"]
+    dependencies {
+        required.project "fabric-api"
+        required.project "yacl"
+        required.project "modmenu"
     }
 }

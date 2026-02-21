@@ -1,10 +1,7 @@
 package com.lukasabbe.simpletransporthud;
 
 import com.lukasabbe.simpletransporthud.config.Config;
-import com.lukasabbe.simpletransporthud.huds.BoatHud;
-import com.lukasabbe.simpletransporthud.huds.ElytraHud;
-import com.lukasabbe.simpletransporthud.huds.MinecartHud;
-import com.lukasabbe.simpletransporthud.huds.SimpleHud;
+import com.lukasabbe.simpletransporthud.huds.*;
 import com.lukasabbe.simpletransporthud.tools.ElytraTools;
 import com.lukasabbe.simpletransporthud.tools.EntityTools;
 import net.fabricmc.api.ClientModInitializer;
@@ -21,7 +18,8 @@ public class SimpleTransportHudMod implements ClientModInitializer {
     public static List<SimpleHud> HUD_LIST = Arrays.asList(
             new ElytraHud(),
             new BoatHud(),
-            new MinecartHud()
+            new MinecartHud(),
+            new HorseHud()
     );
 
     @Override
