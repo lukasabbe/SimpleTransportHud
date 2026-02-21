@@ -3,9 +3,10 @@ package com.lukasabbe.simplehud.config;
 import com.terraformersmc.modmenu.api.ConfigScreenFactory;
 import com.terraformersmc.modmenu.api.ModMenuApi;
 import dev.isxander.yacl3.api.*;
+import dev.isxander.yacl3.api.controller.IntegerSliderControllerBuilder;
 import dev.isxander.yacl3.api.controller.TickBoxControllerBuilder;
-import dev.isxander.yacl3.gui.controllers.TickBoxController;
 import dev.isxander.yacl3.gui.controllers.cycling.EnumController;
+import dev.isxander.yacl3.gui.controllers.slider.IntegerSliderController;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
 
@@ -26,6 +27,12 @@ public class ModMenu implements ModMenuApi {
                         .name(Component.translatable("simple_hud.config.category.general.name"))
                         .tooltip(Component.translatable("simple_hud.config.category.general.tooltip"))
                         .group(toggleOptions())
+                        .option(Option.<Integer>createBuilder()
+                                .name(Component.translatable("simple_hud.config.category.general.option.scale.name"))
+                                .description(OptionDescription.of(Component.translatable("simple_hud.config.category.general.option.scale.description")))
+                                .binding(10, () -> instance.hudScale, newVal -> instance.hudScale = newVal)
+                                .controller(opt -> IntegerSliderControllerBuilder.create(opt).range(0,20).step(1))
+                                .build())
                         .build()
                 )
                 .category(ConfigCategory

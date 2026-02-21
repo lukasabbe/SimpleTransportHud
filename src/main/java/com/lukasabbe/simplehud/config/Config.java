@@ -19,20 +19,33 @@ public class Config {
                     .build())
             .build();
 
+    //Global
+
     @SerialEntry
     public Map<String, Boolean> HudActivatedList = getActiveHuds();
 
     @SerialEntry
-    public HudPosition hudPositionElytra = HudPosition.CENTER;
+    public boolean ignoreSafeArea = false;
 
+    @SerialEntry
+    public int hudScale = 10;
+
+    //Hud positions
+    @SerialEntry
+    public HudPosition hudPositionElytra = HudPosition.CENTER;
+    @SerialEntry
+    public HudPosition hudPositionBoat = HudPosition.CENTER;
+    @SerialEntry
+    public HudPosition hudPositionMinecart = HudPosition.CENTER;
+
+
+    //Hud speed unit
     @SerialEntry
     public SpeedEnum speedEnumElytra = SpeedEnum.kmh;
-
     @SerialEntry
     public SpeedEnum speedEnumBoat = SpeedEnum.kmh;
-
     @SerialEntry
-    public boolean ignoreSafeArea = false;
+    public SpeedEnum speedEnumMinecart = SpeedEnum.kmh;
 
     private Map<String, Boolean> getActiveHuds() {
         Map<String, Boolean> activatedHuds = new IdentityHashMap<>();

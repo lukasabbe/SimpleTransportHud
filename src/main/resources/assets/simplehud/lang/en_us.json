@@ -5,7 +5,7 @@
   "simple_hud.config.category.general.group.activated_huds.name": "Toggle HUD:s",
   "simple_hud.config.category.general.group.activated_huds.description": "Toggle menu for all transport HUD:s",
   "simple_hud.config.category.general.group.activated_huds.option.elytra_hud.name": "Elytra HUD",
-  "simple_hud.config.category.general.group.activated_huds.option.elytra_hud.description": "Elytra Hud toggle, if you don't want to see the an HUD when you fly.",
+  "simple_hud.config.category.general.group.activated_huds.option.elytra_hud.description": "Elytra Hud toggle",
   "simple_hud.config.category.elytra_options.name": "Elytra HUD options",
   "simple_hud.config.category.elytra_options.option.speed_enum.name": "Speed unit",
   "simple_hud.config.category.elytra_options.option.speed_enum.description": "You can change the speed unit to what you are used to",
@@ -14,5 +14,9 @@
   "simple_hud.config.speed_enum.ms": "m/s",
   "simple_hud.config.category.boat_hud.name": "Boat HUD options",
   "simple_hud.config.category.general.group.activated_huds.option.boat_hud.name": "Boat HUD",
-  "simple_hud.config.category.general.group.activated_huds.option.boat_hud.description": "Boat Hud toggle, if you don't want to see the an HUD when you boat around."
+  "simple_hud.config.category.general.group.activated_huds.option.boat_hud.description": "Boat Hud toggle",
+  "simple_hud.config.category.general.option.scale.description": "Change the scale of the HUD",
+  "simple_hud.config.category.general.option.scale.name": "Scale",
+  "simple_hud.config.category.general.group.activated_huds.option.minecart_hud.name": "Minecart HUD",
+  "simple_hud.config.category.general.group.activated_huds.option.minecart_hud.description": "Minecart Hud toggle"
 }

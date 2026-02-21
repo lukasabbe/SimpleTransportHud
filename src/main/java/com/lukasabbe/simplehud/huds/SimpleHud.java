@@ -17,6 +17,16 @@ import net.minecraft.world.item.Item;
 public interface SimpleHud {
     Minecraft client = Minecraft.getInstance();
     Identifier backPlateAsset = Identifier.fromNamespaceAndPath(Constants.MOD_ID, "textures/backplate.png");
+    Identifier compass = Identifier.fromNamespaceAndPath(Constants.MOD_ID, "textures/compass.png");
+    Identifier compass_pointer = Identifier.fromNamespaceAndPath(Constants.MOD_ID, "textures/compass_pointer.png");
+    Identifier left_green_arrow = Identifier.fromNamespaceAndPath(Constants.MOD_ID, "textures/left_green_arrow.png");
+    Identifier right_red_arrow = Identifier.fromNamespaceAndPath(Constants.MOD_ID, "textures/right_red_arrow.png");
+    Identifier left_off_green_arrow = Identifier.fromNamespaceAndPath(Constants.MOD_ID, "textures/off_left_green_arrow.png");
+    Identifier right_off_red_arrow = Identifier.fromNamespaceAndPath(Constants.MOD_ID, "textures/off_left_red_arrow.png");
+    Identifier green_arrow = Identifier.fromNamespaceAndPath(Constants.MOD_ID, "textures/green_arrow.png");
+    Identifier red_arrow = Identifier.fromNamespaceAndPath(Constants.MOD_ID, "textures/red_arrow.png");
+    Identifier off_green_arrow = Identifier.fromNamespaceAndPath(Constants.MOD_ID, "textures/off_green_arrow.png");
+    Identifier off_red_arrow = Identifier.fromNamespaceAndPath(Constants.MOD_ID, "textures/off_red_arrow.png");
 
     void render(GuiGraphics graphics, DeltaTracker tracker);
 

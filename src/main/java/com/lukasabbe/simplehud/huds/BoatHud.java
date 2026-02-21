@@ -2,31 +2,21 @@ package com.lukasabbe.simplehud.huds;
 
 import com.lukasabbe.simplehud.Constants;
 import com.lukasabbe.simplehud.config.Config;
-import com.lukasabbe.simplehud.tools.BoatTools;
+import com.lukasabbe.simplehud.tools.EntityTools;
 import net.minecraft.client.DeltaTracker;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.renderer.RenderPipelines;
 import net.minecraft.resources.Identifier;
 import net.minecraft.util.Mth;
+import net.minecraft.world.entity.vehicle.boat.Boat;
 
 public class BoatHud implements SimpleHud {
-
-    Identifier compass = Identifier.fromNamespaceAndPath(Constants.MOD_ID, "textures/compass.png");
-    Identifier compass_pointer = Identifier.fromNamespaceAndPath(Constants.MOD_ID, "textures/compass_pointer.png");
-    Identifier left_green_arrow = Identifier.fromNamespaceAndPath(Constants.MOD_ID, "textures/left_green_arrow.png");
-    Identifier right_red_arrow = Identifier.fromNamespaceAndPath(Constants.MOD_ID, "textures/right_red_arrow.png");
-    Identifier left_off_green_arrow = Identifier.fromNamespaceAndPath(Constants.MOD_ID, "textures/off_left_green_arrow.png");
-    Identifier right_off_red_arrow = Identifier.fromNamespaceAndPath(Constants.MOD_ID, "textures/off_left_red_arrow.png");
-    Identifier green_arrow = Identifier.fromNamespaceAndPath(Constants.MOD_ID, "textures/green_arrow.png");
-    Identifier red_arrow = Identifier.fromNamespaceAndPath(Constants.MOD_ID, "textures/red_arrow.png");
-    Identifier off_green_arrow = Identifier.fromNamespaceAndPath(Constants.MOD_ID, "textures/off_green_arrow.png");
-    Identifier off_red_arrow = Identifier.fromNamespaceAndPath(Constants.MOD_ID, "textures/off_red_arrow.png");
 
     @Override
     public void render(GuiGraphics graphics, DeltaTracker tracker) {
         if(!isHudActivated()) return;
         if(client.noRender) return;
-        if(!BoatTools.isRidingBoat()) return;
+        if(!EntityTools.isRidingEntity(Boat.class)) return;
         if(client.player == null) return;
 
         int[] pos = getCornerPos();
@@ -41,7 +31,7 @@ public class BoatHud implements SimpleHud {
 
         //Draw boat angle
         int pitchTextY = 5;
-        double angle = BoatTools.getAngle();
+        double angle = EntityTools.getAngle();
         renderCenteredScaledText(graphics, String.format("%3.0f °", angle), x + textX, y + pitchTextY, whiteColor, textScale);
 
         //Draw speed
@@ -195,7 +185,7 @@ public class BoatHud implements SimpleHud {
                 compassWidth, compassHeight
         );
 
-        double radians = BoatTools.getRadians(tracker.getGameTimeDeltaPartialTick(true));
+        double radians = EntityTools.getRadians(tracker.getGameTimeDeltaPartialTick(true));
 
         double radius = 5;
         float centerX = compassX + 14;

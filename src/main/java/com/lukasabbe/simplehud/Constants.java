@@ -12,6 +12,7 @@ public class Constants {
     //Hud:s
     public final static Identifier ElytraHudIdentifier = Identifier.fromNamespaceAndPath(MOD_ID, "elytra_hud");
     public final static Identifier BoatHudIdentifier = Identifier.fromNamespaceAndPath(MOD_ID, "boat_hud");
+    public final static Identifier MinecartHudIdentifier = Identifier.fromNamespaceAndPath(MOD_ID, "minecart_hud");
 
-    public final static List<Identifier> HudIdentifiers = Arrays.asList(ElytraHudIdentifier, BoatHudIdentifier);
+    public final static List<Identifier> HudIdentifiers = Arrays.asList(ElytraHudIdentifier, BoatHudIdentifier, MinecartHudIdentifier);
 }
