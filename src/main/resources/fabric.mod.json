@@ -3,9 +3,13 @@
   "id": "simpletransporthud",
   "version": "${version}",
   "name": "Simple Transport HUD",
-  "description": "",
-  "authors": [],
-  "contact": {},
+  "description": "A Hud mod for different transports in Minecraft ",
+  "authors": ["Lukasabbe"],
+  "contact": {
+    "homepage": "",
+    "sources": "https://github.com/lukasabbe/SimpleTransportHud",
+    "issues": "https://github.com/lukasabbe/SimpleTransportHud/issues"
+  },
   "license": "MIT",
   "icon": "assets/simpletransporthud/icon.png",
   "environment": "*",
