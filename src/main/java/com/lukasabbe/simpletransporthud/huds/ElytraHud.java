@@ -5,7 +5,7 @@ import com.lukasabbe.simpletransporthud.config.Config;
 import com.lukasabbe.simpletransporthud.config.HudPosition;
 import com.lukasabbe.simpletransporthud.tools.ElytraTools;
 import net.minecraft.client.DeltaTracker;
-import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.client.gui.GuiGraphicsExtractor;
 import net.minecraft.client.renderer.RenderPipelines;
 import net.minecraft.resources.Identifier;
 import net.minecraft.util.ARGB;
@@ -15,10 +15,10 @@ import net.minecraft.world.item.Items;
 public class ElytraHud implements SimpleHud {
 
     @Override
-    public void render(GuiGraphics graphics, DeltaTracker tracker) {
+    public void render(GuiGraphicsExtractor graphics, DeltaTracker tracker) {
         if(!isHudActivated()) return;
         if(!ElytraTools.isFlying()) return;
-        if(client.noRender) return;
+        if(client.options.hideGui) return;
         if(client.player == null) return;
         if(ElytraTools.getTime() < Config.HANDLER.instance().elytraHudDelay) return;
 

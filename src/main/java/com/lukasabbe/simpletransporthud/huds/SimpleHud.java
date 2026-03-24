@@ -7,7 +7,7 @@ import com.lukasabbe.simpletransporthud.config.SpeedEnum;
 import com.lukasabbe.simpletransporthud.tools.ElytraTools;
 import net.minecraft.client.DeltaTracker;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.client.gui.GuiGraphicsExtractor;
 import net.minecraft.client.renderer.RenderPipelines;
 import net.minecraft.resources.Identifier;
 import net.minecraft.util.Mth;
@@ -27,7 +27,7 @@ public interface SimpleHud {
     Identifier off_green_arrow = Identifier.fromNamespaceAndPath(Constants.MOD_ID, "textures/off_green_arrow.png");
     Identifier off_red_arrow = Identifier.fromNamespaceAndPath(Constants.MOD_ID, "textures/off_red_arrow.png");
 
-    void render(GuiGraphics graphics, DeltaTracker tracker);
+    void render(GuiGraphicsExtractor graphics, DeltaTracker tracker);
 
     Identifier getIdentifier();
     HudPosition getHudPosition();
@@ -36,7 +36,7 @@ public interface SimpleHud {
         return Config.HANDLER.instance().HudActivatedList.get(getIdentifier().toShortString());
     }
 
-    default void renderBackPlate(GuiGraphics graphics){
+    default void renderBackPlate(GuiGraphicsExtractor graphics){
         int[] pos = getCornerPos();
         int x = pos[0];
         int y = pos[1];
@@ -80,23 +80,23 @@ public interface SimpleHud {
         };
     }
 
-    default void renderCenteredScaledText(GuiGraphics graphics, String text, int centerX, int y, int color, float scale){
+    default void renderCenteredScaledText(GuiGraphicsExtractor graphics, String text, int centerX, int y, int color, float scale){
         var stack = graphics.pose();
         stack.pushMatrix();
         stack.translate(centerX, y);
         stack.scale(scale, scale);
         stack.translate(-centerX, -y);
-        graphics.drawString(client.font, text, centerX, y, color);
+        graphics.text(client.font, text, centerX, y, color);
         stack.popMatrix();
     }
 
-    default void drawScaledItem(GuiGraphics context, int poxX, int posY, Item item, float scaled){
+    default void drawScaledItem(GuiGraphicsExtractor context, int poxX, int posY, Item item, float scaled){
         var stack = context.pose();
         stack.pushMatrix();
         stack.translate(poxX,posY);
         stack.scale(scaled,scaled);
         stack.translate(-poxX,-posY);
-        context.renderFakeItem(item.getDefaultInstance(), poxX, posY);
+        context.fakeItem(item.getDefaultInstance(), poxX, posY);
         stack.popMatrix();
     }
 
@@ -112,7 +112,7 @@ public interface SimpleHud {
         return new int[]{x, y};
     }
 
-    default void drawLine(GuiGraphics graphics, float posX, float posY, float endPosX, float endPosY, int points, Identifier texture){
+    default void drawLine(GuiGraphicsExtractor graphics, float posX, float posY, float endPosX, float endPosY, int points, Identifier texture){
         for (int i = 0; i <= points; i++){
             float progress = (float) i / points;
             float x = Mth.lerp(progress, posX, endPosX);
