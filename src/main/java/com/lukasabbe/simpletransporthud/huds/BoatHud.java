@@ -5,7 +5,7 @@ import com.lukasabbe.simpletransporthud.config.Config;
 import com.lukasabbe.simpletransporthud.config.HudPosition;
 import com.lukasabbe.simpletransporthud.tools.EntityTools;
 import net.minecraft.client.DeltaTracker;
-import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.client.gui.GuiGraphicsExtractor;
 import net.minecraft.client.renderer.RenderPipelines;
 import net.minecraft.resources.Identifier;
 import net.minecraft.util.Mth;
@@ -14,9 +14,9 @@ import net.minecraft.world.entity.vehicle.boat.Boat;
 public class BoatHud implements SimpleHud {
 
     @Override
-    public void render(GuiGraphics graphics, DeltaTracker tracker) {
+    public void render(GuiGraphicsExtractor graphics, DeltaTracker tracker) {
         if(!isHudActivated()) return;
-        if(client.noRender) return;
+        if(client.options.hideGui) return;
         if(!EntityTools.isRidingEntity(Boat.class)) return;
         if(client.player == null) return;
         if(EntityTools.getTime() < Config.HANDLER.instance().boatHudDelay) return;

@@ -6,13 +6,13 @@ import com.lukasabbe.simpletransporthud.config.HudPosition;
 import com.lukasabbe.simpletransporthud.config.SpeedEnum;
 import com.lukasabbe.simpletransporthud.tools.EntityTools;
 import net.minecraft.client.DeltaTracker;
-import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.client.gui.GuiGraphicsExtractor;
 import net.minecraft.resources.Identifier;
 import net.minecraft.world.entity.monster.Strider;
 
 public class StriderHud extends RideableHud{
     @Override
-    public void render(GuiGraphics graphics, DeltaTracker tracker) {
+    public void render(GuiGraphicsExtractor graphics, DeltaTracker tracker) {
         if(!EntityTools.isRidingEntity(Strider.class)) return;
         super.render(graphics, tracker);
     }

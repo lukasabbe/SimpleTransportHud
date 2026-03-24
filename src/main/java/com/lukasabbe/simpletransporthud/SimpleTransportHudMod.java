@@ -8,7 +8,7 @@ import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.fabricmc.fabric.api.client.rendering.v1.hud.HudElementRegistry;
 import net.minecraft.client.DeltaTracker;
-import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.client.gui.GuiGraphicsExtractor;
 
 import java.util.Arrays;
 import java.util.List;
@@ -37,7 +37,7 @@ public class SimpleTransportHudMod implements ClientModInitializer {
         ClientTickEvents.END_CLIENT_TICK.register(client -> EntityTools.tickEntityTools());
     }
 
-    public static void renderScaled(GuiGraphics graphics, DeltaTracker tracker, SimpleHud simpleHud){
+    public static void renderScaled(GuiGraphicsExtractor graphics, DeltaTracker tracker, SimpleHud simpleHud){
         var stack = graphics.pose();
         final float scale = (float) Config.HANDLER.instance().hudScale / 10;
         int width = graphics.guiWidth();

@@ -3,15 +3,15 @@ package com.lukasabbe.simpletransporthud.huds;
 import com.lukasabbe.simpletransporthud.config.SpeedEnum;
 import com.lukasabbe.simpletransporthud.tools.EntityTools;
 import net.minecraft.client.DeltaTracker;
-import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.client.gui.GuiGraphicsExtractor;
 import net.minecraft.client.renderer.RenderPipelines;
 import net.minecraft.util.Mth;
 
 public abstract class RideableHud implements SimpleHud {
     @Override
-    public void render(GuiGraphics graphics, DeltaTracker tracker) {
+    public void render(GuiGraphicsExtractor graphics, DeltaTracker tracker) {
         if(!isHudActivated()) return;
-        if(client.noRender) return;
+        if(client.options.hideGui) return;
         if(client.player == null) return;
         if(EntityTools.getTime() < getDelay()) return;
         int[] pos = getCornerPos();
