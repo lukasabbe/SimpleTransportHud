@@ -18,7 +18,7 @@ public class ElytraHud implements SimpleHud {
     public void render(GuiGraphicsExtractor graphics, DeltaTracker tracker) {
         if(!isHudActivated()) return;
         if(!ElytraTools.isFlying()) return;
-        if(client.options.hideGui) return;
+        if(client.gui.hud.isHidden()) return;
         if(client.player == null) return;
         if(ElytraTools.getTime() < Config.HANDLER.instance().elytraHudDelay) return;
 

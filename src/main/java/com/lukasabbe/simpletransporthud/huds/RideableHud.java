@@ -11,7 +11,7 @@ public abstract class RideableHud implements SimpleHud {
     @Override
     public void render(GuiGraphicsExtractor graphics, DeltaTracker tracker) {
         if(!isHudActivated()) return;
-        if(client.options.hideGui) return;
+        if(client.gui.hud.isHidden()) return;
         if(client.player == null) return;
         if(EntityTools.getTime() < getDelay()) return;
         int[] pos = getCornerPos();
